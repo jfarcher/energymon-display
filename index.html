@@ -36,7 +36,7 @@
     function startClock() {
       $(".location").html(params.location);
 
-      if(params.location == 'EPOCH') {
+      if(params.location == 'imperial') {
         $('.time').css('font-size', '100px');
         startEpochTime();
       } else {
@@ -83,11 +83,22 @@
         }
     }
   </script>
+  <script type="text/javascript" src="static/imperial-calendar.js"></script>
+    <script type="text/javascript"> 
+        function exampleUsage() {
+        	var theGregorianDate = new Date();
+            var theImperialDate = new ImperialCalendar(theGregorianDate);
+            document.getElementById("gregorian").innerHTML = theGregorianDate;
+            document.getElementById("imperial").innerHTML = theImperialDate.imperialDate(true);
+        }
+        window.onload = exampleUsage;    
+    </script>
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body onload="startClock()">
   <center>
-    <div class="time">19:30</div>
+    <div class="time">placeholder</div>
     <br/>
     <div class="location">zulu/utc99</div>
   </center>
