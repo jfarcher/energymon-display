@@ -11,7 +11,7 @@
       font-family: ds_digib;
       src: local(ds_digib), url('digital.ttf') format('opentype');
     }
-     .imp1 {
+     .time {
       margin: 30px;
       margin-top: 120px;
       font-family:ds_digib;
@@ -21,7 +21,7 @@
       background-color: #211;
       padding-top: 30px;
     }
-    .location {
+    .imp1 {
       margin: 0px 30px;
       font-family:ds_digib;
       font-size:135px;
@@ -33,11 +33,61 @@
       padding-top: 30px;
     }
 </style>
+  <script>
+    function startClock() {
+      $(".location").html(params.location);
 
+      if(params.location == 'EPOCH') {
+        $('.time').css('font-size', '100px');
+        startEpochTime();
+      } else {
+        startTime();
+      }
+    }
 
+    function startTime() {
+      var today=new Date();
+      var h=today.getHours();
+      var m=today.getMinutes();
+      var s=today.getSeconds();
+      // add a zero in front of numbers<10
+      h=checkTime(h);
+      m=checkTime(m);
+      $('.time').html(h+":"+m)
+      t=setTimeout(function(){startTime()},500);
+    }
 
-        <script type="text/javascript" src="imperial-calendar.js"></script>
-        <script type="text/javascript">
+    function checkTime(i)
+    {
+      if (i<10)
+        {
+        i="0" + i;
+        }
+      return i;
+    }
+
+    function startEpochTime() {
+      var tick = Math.round((new Date).valueOf() / 1000)
+
+      $('.time').html(tick.toString())
+      setTimeout(function(){startEpochTime()},500);
+    }
+
+    var params = {};
+    if (location.search) {
+        var parts = location.search.substring(1).split('&');
+
+        for (var i = 0; i < parts.length; i++) {
+            var nv = parts[i].split('=');
+            if (!nv[0]) continue;
+            params[nv[0]] = decodeURIComponent(nv[1]) || true;
+        }
+    }
+  </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <script type="text/javascript" src="imperial-calendar.js"></script>
+  <script type="text/javascript">
                 function exampleUsage() {
 
                         var theGregorianDate = new Date();
@@ -51,15 +101,13 @@
             document.getElementById("imp2").innerHTML = theImperialDate.imperialDate(true);
 
             }
-            window.onload = exampleUsage;
-        </script>
+  </script>  
 </head>
-<body>
-<center>
-    <div class="imp1">
-            <div id="imp1"></div>
-</div>
-<br/>
-    <div class="location">Imperial</div>
+<body onload="startClock(); exampleUsage();">
+  <center>
+    <div class="time">19:30</div>
+    <br/>
+    <div class="imp1"><div id="imp1">0 998 013.M3</div></div>
+  </center>
 </body>
 </html>
