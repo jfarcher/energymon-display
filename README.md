@@ -1,4 +1,6 @@
-# Situation Clock
+# Situation Clock - Imperial style
+
+This version has been modified to display the time in Warhammer 40k Imperial time.
 
 If you want to build a Situation Room, you'll need some sweet red clocks in the walls.  One way to do that might be to install old iPads via some sort of powered mounts and set them to this GH Pages site: 
 
