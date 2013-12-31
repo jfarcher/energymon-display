@@ -6,7 +6,7 @@ JS for imperial time taken from https://github.com/Valkrysa/wh40k-imperial-calen
 
 If you want to build a Situation Room, you'll need some sweet red clocks in the walls.  One way to do that might be to install old iPads via some sort of powered mounts and set them to this GH Pages site: 
 
-`http://schacon.github.io/situation-clock/index.html?location=ZULU/GMT`
+`http://jfarcher.github.io/situation-clock/index.html`
 
 You could end up with something like this:
 
