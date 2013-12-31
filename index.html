@@ -88,8 +88,7 @@
         function exampleUsage() {
         	var theGregorianDate = new Date();
             var theImperialDate = new ImperialCalendar(theGregorianDate);
-            document.getElementById("gregorian").innerHTML = theGregorianDate;
-            document.getElementById("imperial").innerHTML = theImperialDate.imperialDate(true);
+            document.getElementById("imp1").innerHTML = theImperialDate.imperialDate(true);
         }
         window.onload = exampleUsage;    
     </script>
@@ -98,7 +97,7 @@
 </head>
 <body onload="startClock()">
   <center>
-    <div class="time"><span id="imperial" style="font-size:250%;">placeholder</span></div>
+    <div id="imp1"></div>
     <br/>
     <div class="location">zulu/utc99</div>
   </center>
