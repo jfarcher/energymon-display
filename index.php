@@ -2,7 +2,7 @@
 <html>
 <head>
         <meta charset="ISO-8859-1">
-        <meta http-equiv="refresh" content="300" >
+        <meta http-equiv="refresh" content="30" >
 <style type="text/css">
     body {
       background-color:black;
@@ -87,28 +87,24 @@
   </script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-  <script type="text/javascript" src="imperial-calendar.js"></script>
-  <script type="text/javascript">
-                function exampleUsage() {
-
-                        var theGregorianDate = new Date();
-                        var theImperialDate = new ImperialCalendar(theGregorianDate);
-
-            document.getElementById("imp1").innerHTML = theImperialDate.imperialDate(true);
-
-            theGregorianDate = new Date(2001, 11, 31);
-            theImperialDate = new ImperialCalendar(theGregorianDate);
-            document.getElementById("greg2").innerHTML = theGregorianDate;
-            document.getElementById("imp2").innerHTML = theImperialDate.imperialDate(true);
-
-            }
-  </script>  
 </head>
 <body onload="startClock(); exampleUsage();">
+<?php 
+
+$con=mysqli_connect("127.0.0.1","enmon","enm0np455","enmon");
+$result = mysqli_query($con,"SELECT * FROM power_usage");
+
+while($row = mysqli_fetch_array($result))
+  {
+$watts = $row['counter'];	  
+}
+$kwh=$watts/1000;
+mysqli_close($con);
+?>
   <center>
-    <div class="time">19:30</div>
-    <br/>
-    <div class="imp1"><div id="imp1">0 998 013.M3</div></div>
+    <div class="time">Time</div>
+    <div class="imp1" id="imp1"><?php echo $kwh; ?>KwH</div>   
+<br/>
   </center>
 </body>
 </html>
