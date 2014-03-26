@@ -2,7 +2,7 @@
 <html>
 <head>
         <meta charset="ISO-8859-1">
-        <meta http-equiv="refresh" content="300" >
+        <meta http-equiv="refresh" content="30" >
 <style type="text/css">
     body {
       background-color:black;
